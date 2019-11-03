@@ -12,15 +12,17 @@ class CounterApp extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={{ flexDirection: 'row', width: 200, justifyContent: 'space-around' }}>
-                    <TouchableOpacity onPress={() => this.props.increaseCounter()}>
-                        <Text style={{ fontSize: 20 }}>Increase</Text>
-                    </TouchableOpacity>
-                    <Text style={{ fontSize: 20 }}>{this.props.counter}</Text>
-                    <TouchableOpacity onPress={() => this.props.decreaseCounter()}>
-                        <Text style={{ fontSize: 20 }}>Decrease</Text>
-                    </TouchableOpacity>
-                </View>
+
+                <TouchableOpacity onPress={() => this.props.increaseCounter()} style={styles.button}>
+                    <Text style={styles.TextContainer}>Increase</Text>
+                </TouchableOpacity>
+
+                <Text style={{ fontSize: 40, textAlign:'center',marginTop: 50 }}>{this.props.counter}</Text>
+
+                <TouchableOpacity onPress={() => this.props.decreaseCounter()} style={{...styles.button,backgroundColor:'green'}}>
+                    <Text style={styles.TextContainer}>Decrease</Text>
+                </TouchableOpacity>
+
             </View>
         );
     }
@@ -45,7 +47,19 @@ export default connect(mapStateToProps, mapDispatchToProps)(CounterApp)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center'
+    },
+    button: {
+     backgroundColor:'red',
+     marginHorizontal: 110,
+     marginTop: 60,
+     alignItems:'center',
+     justifyContent:'center',
+     borderRadius:10
+    },
+    TextContainer: {
+      fontSize:25,
+      color:'white',
+      fontWeight:'bold'
     }
 });
